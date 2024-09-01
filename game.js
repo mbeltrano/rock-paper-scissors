@@ -1,33 +1,20 @@
-console.log("Hello World");
+const choice = ["rock", "paper", "scissors"];
 let humanScore = 0;
 let computerScore = 0;
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
 
 function getComputerChoice(){
-    const choice = ["rock", "paper", "scissors"];
     let computer = choice[Math.floor(Math.random() * choice.length)];
-    console.log(computer);
+    //console.log(computer);
     return computer;
 }
 
-
-
-/*function getHumanChoice(){
-    let selectedValue = document.getElementById("valueSelected").value;
-    console.log(selectedValue);
-    return selectedValue;
-}*/
-
 function getHumanChoice(){
     let displayMessage = prompt("Write rock, paper or scissors!");
-    const choice = ["rock", "paper", "scissors"];
-    console.log(displayMessage.toLowerCase());
+    //console.log(displayMessage.toLowerCase());
     return(displayMessage.toLowerCase());
 }
 
 function playRound(humanChoice, computerChoice){
-    const choice = ["rock", "paper", "scissors"];
     if(!(choice.includes(humanChoice.toLowerCase()))){
         console.log("Wrong choice!!! only rock,paper or scissors")
     }
@@ -48,16 +35,32 @@ function playRound(humanChoice, computerChoice){
         return humanScore+=1;
     }
     else if(humanChoice.toLowerCase() == "paper" && computerChoice == "rock" ){
-        console.log("You won! Paper beats Rock.")
+        console.log("You won! Paper beats Rock.");
         return humanScore+=1;
     }
     else if(humanChoice.toLowerCase() == "scissors" && computerChoice == "paper" ){
-        console.log("You won! Scissors beats Paper.")
+        console.log("You won! Scissors beats Paper.");
         return humanScore+=1;
     }
-    else {console.log("Draw! You chose " + humanChoice.toLowerCase() + " and the computer chose " + computerChoice)}
+    else {console.log("Draw! You chose " + humanChoice.toLowerCase() + " and the computer chose " + computerChoice);}
 
 }
 
 
-playRound(humanSelection, computerSelection);
+function playGame(){
+    console.log("Hello World");
+    while(humanScore < 3 && computerScore <3){
+        let humanSelection = getHumanChoice();
+        let computerSelection = getComputerChoice();
+        
+        playRound(humanSelection, computerSelection);
+        console.log("YOU: " + humanScore + "  COMP: " + computerScore);
+        
+     } 
+    if(humanScore > computerScore){
+        alert("You Won!!!");
+    } else {alert("Computer Won!!!");}
+   
+}
+
+playGame();
